@@ -6,47 +6,7 @@
 
 配置环境php 8.1 mysql 8.0.1
 新建网站-添加伪静态-添加ssl
-# Deny access to sensitive stuff
-location ~* ^/（applimporting）/ ｛
-deny all；
-return 404；
-｝
-Location ~* ^/（images |content）/ ｛
-fastcgi_pass off；
-default_type
-""；
-Location ~* \.（php13451？|phtml|html？）$1
-deny alli
-return 403；
-｝
-location ~* composerl.json|composerl.lockl.gitignore$｛
-return 404；
-｝
-Location ~* /.ht i
-return 404；
-｝
-# Image not found replacement
-location ~* \.（jpe?g|png|gif|webp）$｛
-log_not_found off；
-error_page 404 /content/images/system/default/404.gif；
-｝
-# CORS header （avoids font rendering issues）
-location ~* \.（ttflttclotfleot|woff|woff2|font.css|cssljs）$｛
-add_header Access-Control-Allow-Origin "*"；
-｝
-# PHP front controller
-Location / ｛
-index index.php；
-try_files $uri $uri/ /index.php$is_args$query_string；
-｝
-# SingLe PHP-entrypoint（disables direct access
-to -php files）
-location ~* \.php$｛
-internal；
-include snippets/fastcgi-php.conf；
-fastcgi_pass unix:/var/run/php/php8.1-fpm.sock；
-｝
-
+将nginx.conf的伪静态拷贝到宝塔伪静态中
 安装chevereto
 进入宝塔面板 → PHP设置 → 禁用函数 → 检查是否包含以下关键函数：删掉其中禁用函数
 * move_uploaded_file（必须解除禁用）
